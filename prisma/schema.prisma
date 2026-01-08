@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Country {
+  id        String  @id @default(cuid())
+  code      String  @unique
+  name      String
+  createdAt DateTime @default(now())
+
+  checklistItems ChecklistItem[]
+}
+
+model ChecklistItem {
+  id          String   @id @default(cuid())
+  countryId   String
+  category    String
+  title       String
+  description String
+  link        String?
+  sortOrder   Int
+
+  country Country @relation(fields: [countryId], references: [id])
+}
