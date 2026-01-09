@@ -68,9 +68,14 @@ export default function StartWizard() {
   const [project, setProject] = useState<Project>({});
 
   /* -------- Helpers -------- */
-  function update(data: Partial<Project>) {
-    setProject((prev) => ({ ...prev, ...data }));
-  }
+ function update(data: Partial<Project>) {
+  setProject((prev) => {
+    const next = { ...prev, ...data };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    return next;
+  });
+}
+
 
   function checkBusinessName() {
     if (!project.businessName) return;
