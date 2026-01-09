@@ -12,6 +12,7 @@ export default function Nav() {
           <Link className="hover:underline" href="/checklist">Checklist</Link>
           <Link className="hover:underline" href="/resources">Resources</Link>
           <Link className="hover:underline" href="/templates">Templates</Link>
+          <Link className="hover:underline" href="/overview">Overview</Link>
         </nav>
       </div>
     </header>
