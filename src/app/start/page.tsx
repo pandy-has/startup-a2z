@@ -50,6 +50,9 @@ const BUSINESS_STRUCTURES = [
 
 const TAKEN_NAMES = ["Apple", "Amazon", "Stripe", "Acme", "Startup A–Z"];
 
+const STORAGE_KEY = "startupA2Z_project_v1";
+
+
 /* ------------------ Component ------------------ */
 export default function StartWizard() {
   const [project, setProject] = useState<Project>({});
