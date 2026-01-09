@@ -19,6 +19,16 @@ type Project = {
   };
 };
 
+useEffect(() => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) setProject(JSON.parse(raw));
+  } catch {
+    // ignore
+  }
+}, []);
+
+
 /* ------------------ Constants ------------------ */
 const BUSINESS_STRUCTURES = [
   {
