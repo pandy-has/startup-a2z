@@ -1,29 +1,30 @@
 export type Project = {
+  // IDEA
   problem?: string;
   productDescription?: string;
 
+  // LEGAL
   businessStructure?: string;
   businessStructureOther?: string;
+  state?: string; // optional later
   needsEIN?: "yes" | "no";
-  einReason?: string;
 
+  // BRANDING
   businessName?: string;
-  nameCheckResult?: { status: "unknown" | "likely_taken" | "not_found_in_app"; notes: string };
-
   logoStyle?: string;
-  logoSketchDataUrl?: string; // from canvas
-  logoUploadDataUrl?: string; // from file upload
+  logoSketchDataUrl?: string;
+  logoUploadDataUrl?: string;
+  generatedLogoSvg?: string; // SVG string
 
+  // OPERATIONS
   bookkeepingChoice?: string;
-  estimatedMonthlyBudget?: number;
+  estimatedMonthlyBudgetText?: string; // store as text to avoid 0 bug
 
-  pricing?: {
-    marketType?: "b2c" | "b2b";
-    productType?: "service" | "physical" | "digital";
-    suggestedLow?: number;
-    suggestedHigh?: number;
-    currency?: string;
-  };
+  // GO-TO-MARKET
+  marketType?: "b2c" | "b2b";
+  productType?: "service" | "physical" | "digital";
+  priceLow?: number;
+  priceHigh?: number;
 
   supplierCategory?: string;
   selectedSuppliers?: string[];
@@ -31,12 +32,16 @@ export type Project = {
   updatedAt?: string;
 };
 
-const KEY = "startupA2Z_project_v1";
+const KEY = "startupA2Z_project_v2";
 
 export function loadProject(): Project {
   if (typeof window === "undefined") return {};
-  const raw = localStorage.getItem(KEY);
-  return raw ? (JSON.parse(raw) as Project) : {};
+  try {
+    const raw = localStorage.getItem(KEY);
+    return raw ? (JSON.parse(raw) as Project) : {};
+  } catch {
+    return {};
+  }
 }
 
 export function saveProject(p: Project) {
