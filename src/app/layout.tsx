@@ -2,7 +2,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 
 export const metadata = {
-  title: "Startup A–Z",
+  title: "A–Z for Startups",
   description: "A–Z guide for starting a business"
 };
 
