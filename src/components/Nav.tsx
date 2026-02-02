@@ -5,7 +5,7 @@ export default function Nav() {
     <header className="border-b">
       <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
         <Link href="/" className="font-semibold text-lg">
-          Startup A–Z
+          A–Z for Startups
         </Link>
         <nav className="flex gap-4 text-sm">
           <Link className="hover:underline" href="/start">Start Here</Link>
